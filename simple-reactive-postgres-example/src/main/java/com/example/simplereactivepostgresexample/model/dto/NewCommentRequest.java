@@ -8,12 +8,12 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public class NewCommentRequest {
-    @NotNull
-    @NotBlank
-    @Max(1000)
+    @NotNull(message = "Topic id should not be null")
+    @NotBlank(message = "Topic id should not be blank")
+    @Max(value = 1000, message = "Topic id should be less than 1000 characters")
     private String commentText;
-    @NotNull
-    @NotBlank
-    @Max(255)
+    @NotNull(message = "Author should not be null")
+    @NotBlank(message = "Author should not be blank")
+    @Max(value = 255, message = "Author should be less than 255 characters")
     private String author;
 }

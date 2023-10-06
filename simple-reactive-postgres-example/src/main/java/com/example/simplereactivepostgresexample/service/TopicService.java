@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Slf4j
@@ -37,14 +36,8 @@ public class TopicService {
     public Mono<TopicDto> create(Mono<NewTopicRequest> newTopicRequest) {
         return newTopicRequest
                 .map(TopicMapper.TOPIC_MAPPER::toTopicFromNewRequest)
-                .flatMap(topic -> {
-                    OffsetDateTime now = OffsetDateTime.now();
-
-                    return Mono.justOrEmpty(topic.setCreatedAt(now)
-                            .setUpdatedAt(now)
-                            .setVisible(true));
-
-                })
+                .flatMap(topic -> Mono.justOrEmpty(topic
+                        .setVisible(true)))
                 .flatMap(topicsRepository::save)
                 .map(TopicMapper.TOPIC_MAPPER::toTopicDto)
                 .doOnSuccess(topic -> log.info("Topic created: {}", topic));
