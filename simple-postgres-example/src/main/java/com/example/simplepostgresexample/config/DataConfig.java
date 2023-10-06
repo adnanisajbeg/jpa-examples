@@ -12,10 +12,10 @@ public class DataConfig {
     @Bean
     public DataSource getDataSource(DbProperties dbProperties) {
         return DataSourceBuilder.create()
-                .driverClassName(dbProperties.getDriverClassName())
-                .url(dbProperties.getUrl())
-                .username(dbProperties.getUsername())
-                .password(dbProperties.getPassword())
+                .driverClassName("org.postgresql.Driver")
+                .url("jdbc:postgresql://localhost:5432/postgres")
+                .username("user")
+                .password("user")
                 .build();
     }
 }

@@ -20,6 +20,7 @@
     <modules>
         <module>simple-postgres-example</module>
         <module>search-by-criteria-example</module>
+        <module>simple-reactive-postgres-example</module>
     </modules>
 
 </project>

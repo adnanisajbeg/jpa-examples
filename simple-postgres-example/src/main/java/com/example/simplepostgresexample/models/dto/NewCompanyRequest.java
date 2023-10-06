@@ -1,8 +1,6 @@
 package com.example.simplepostgresexample.models.dto;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Getter
@@ -15,6 +13,7 @@ public class NewCompanyRequest {
     @NotNull
     @NotBlank
     @Max(255)
+    @Min(3)
     private String name;
     @NotNull
     @NotBlank
